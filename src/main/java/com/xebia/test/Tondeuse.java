@@ -45,6 +45,15 @@ public class Tondeuse {
                 else if(direction == 'W')
                     direction = 'N';
 
+            } else if(cmd == 'G'){
+                if(direction == 'N')
+                    direction = 'W';
+                else if(direction == 'W')
+                    direction = 'S';
+                else if(direction == 'S')
+                    direction = 'E';
+                else if(direction == 'E')
+                    direction = 'N';
             }
 
 

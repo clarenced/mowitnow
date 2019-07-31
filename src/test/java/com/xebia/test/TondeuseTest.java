@@ -33,8 +33,8 @@ public class TondeuseTest {
 
     @DisplayName("La tondeuse doit pivoter à droite la tondeuse lorsqu'elle reçoit la commande D")
     @ParameterizedTest(name = "{index} - Commande {1} => actual : {0}, expected : ({2},{3},{4})")
-    @MethodSource("pivoterArguments")
-    void testPivoterTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
+    @MethodSource("pivoterDroiteArguments")
+    void testPivoterDroiteTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
         tondeuse.avancer(commande);
 
         assertEquals(xExpected, tondeuse.getX());
@@ -42,12 +42,32 @@ public class TondeuseTest {
         assertEquals(directionExpected, tondeuse.getDirection());
     }
 
-    static Stream<Arguments> pivoterArguments(){
+    static Stream<Arguments> pivoterDroiteArguments(){
         return Stream.of(
                 Arguments.of(new Tondeuse(0,0, 'N'), "D".toCharArray(),0, 0, 'E'),
                 Arguments.of(new Tondeuse(0,0, 'S'), "D".toCharArray(), 0, 0, 'W'),
                 Arguments.of(new Tondeuse(0,0, 'E'), "D".toCharArray(), 0, 0, 'S'),
                 Arguments.of(new Tondeuse(0,0, 'W'), "D".toCharArray(), 0, 0, 'N')
+        );
+    }
+
+    @DisplayName("La tondeuse doit pivoter à gauche la tondeuse lorsqu'elle reçoit la commande G")
+    @ParameterizedTest(name = "{index} - Commande {1} => actual : {0}, expected : ({2},{3},{4})")
+    @MethodSource("pivoterGaucheArguments")
+    void testPivoterGaucheTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
+        tondeuse.avancer(commande);
+
+        assertEquals(xExpected, tondeuse.getX());
+        assertEquals(yExpected, tondeuse.getY());
+        assertEquals(directionExpected, tondeuse.getDirection());
+    }
+
+    static Stream<Arguments> pivoterGaucheArguments(){
+        return Stream.of(
+                Arguments.of(new Tondeuse(0,0, 'N'), "G".toCharArray(),0, 0, 'W'),
+                Arguments.of(new Tondeuse(0,0, 'S'), "G".toCharArray(), 0, 0, 'E'),
+                Arguments.of(new Tondeuse(0,0, 'E'), "G".toCharArray(), 0, 0, 'N'),
+                Arguments.of(new Tondeuse(0,0, 'W'), "G".toCharArray(), 0, 0, 'S')
         );
     }
 
