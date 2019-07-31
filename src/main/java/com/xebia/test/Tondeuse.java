@@ -23,4 +23,12 @@ public class Tondeuse {
     public char getDirection() {
         return direction;
     }
+
+    public void avancer(char[] commande) {
+        for(char cmd: commande){
+            if(cmd == 'A')
+                ++this.y;
+        }
+
+    }
 }
