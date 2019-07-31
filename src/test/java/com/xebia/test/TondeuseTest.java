@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TondeuseTest {
 
-    @DisplayName("La tondeuse doit avancer la tondeuse lorsqu'elle reçoit la commande A")
+    @DisplayName("La tondeuse doit avancer lorsqu'elle reçoit la commande A")
     @ParameterizedTest(name = "{index} - Commande {1} => actual : {0}, expected : ({2},{3},{4})")
     @MethodSource("avancerArguments")
     void testAvancerTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
@@ -70,7 +70,4 @@ public class TondeuseTest {
                 Arguments.of(new Tondeuse(0,0, 'W'), "G".toCharArray(), 0, 0, 'S')
         );
     }
-
-
-
 }
