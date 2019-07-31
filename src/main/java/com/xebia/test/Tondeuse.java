@@ -27,7 +27,8 @@ public class Tondeuse {
     public void avancer(char[] commande) {
         for(char cmd: commande){
             if(cmd == 'A')
-                ++this.y;
+                if(direction == 'N')
+                    ++this.y;
         }
 
     }

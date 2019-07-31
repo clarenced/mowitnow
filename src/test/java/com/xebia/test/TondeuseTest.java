@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TondeuseTest {
 
-    @DisplayName("La tondeuse doit avancer lorsqu'elle reçoit la commande A")
+    @DisplayName("La tondeuse doit avancer lorsqu'elle est en position initiale et en direction N")
     @Test
     void testAvancerTondeuseLorsquePositionInitialeEtDirectionNord(){
         char[] commande = {'A'};
@@ -19,8 +19,6 @@ public class TondeuseTest {
         assertEquals(1, tondeuse.getY());
         assertEquals('N', tondeuse.getDirection());
     }
-
-
 
 
 }
