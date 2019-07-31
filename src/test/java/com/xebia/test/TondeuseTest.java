@@ -17,9 +17,9 @@ public class TondeuseTest {
     void testAvancerTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
         tondeuse.avancer(commande);
 
-        assertEquals(xExpected, tondeuse.getX());
-        assertEquals(yExpected, tondeuse.getY());
-        assertEquals(directionExpected, tondeuse.getDirection());
+        assertEquals(xExpected, tondeuse.getPositionTondeuse().getX());
+        assertEquals(yExpected, tondeuse.getPositionTondeuse().getY());
+        assertEquals(directionExpected, tondeuse.getPositionTondeuse().getDirection());
     }
 
     static Stream<Arguments> avancerArguments(){
@@ -37,9 +37,9 @@ public class TondeuseTest {
     void testPivoterDroiteTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
         tondeuse.avancer(commande);
 
-        assertEquals(xExpected, tondeuse.getX());
-        assertEquals(yExpected, tondeuse.getY());
-        assertEquals(directionExpected, tondeuse.getDirection());
+        assertEquals(xExpected, tondeuse.getPositionTondeuse().getX());
+        assertEquals(yExpected, tondeuse.getPositionTondeuse().getY());
+        assertEquals(directionExpected, tondeuse.getPositionTondeuse().getDirection());
     }
 
     static Stream<Arguments> pivoterDroiteArguments(){
@@ -57,9 +57,9 @@ public class TondeuseTest {
     void testPivoterGaucheTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
         tondeuse.avancer(commande);
 
-        assertEquals(xExpected, tondeuse.getX());
-        assertEquals(yExpected, tondeuse.getY());
-        assertEquals(directionExpected, tondeuse.getDirection());
+        assertEquals(xExpected, tondeuse.getPositionTondeuse().getX());
+        assertEquals(yExpected, tondeuse.getPositionTondeuse().getY());
+        assertEquals(directionExpected, tondeuse.getPositionTondeuse().getDirection());
     }
 
     static Stream<Arguments> pivoterGaucheArguments(){
