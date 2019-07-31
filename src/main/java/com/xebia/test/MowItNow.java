@@ -1,13 +1,9 @@
 package com.xebia.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class MowItNow {
 
     private Pelouse pelouse;
-    private List<Tondeuse> tondeuses;
+    private int nombreDeTondeuses;
 
     public MowItNow(String input){
         checkInput(input);
@@ -15,17 +11,18 @@ public class MowItNow {
         String[] parameters = input.split("\n");
         creerPelouse(parameters[0]);
         creerTondeuses(parameters);
-
     }
 
     private void creerTondeuses(String[] parameters) {
-        tondeuses = new ArrayList<>();
         for(int i = 1; i < parameters.length; i = i + 2){
             String[] positionTondeuse = parameters[i].split(" ");
             int x = Integer.parseInt(positionTondeuse[0]);
             int y = Integer.parseInt(positionTondeuse[1]);
             char direction = positionTondeuse[2].charAt(0);
-            tondeuses.add(new Tondeuse(x,y,direction));
+            nombreDeTondeuses++;
+            Tondeuse tondeuse = new Tondeuse(x, y, direction);
+            tondeuse.avancer(parameters[i + 1].toCharArray());
+            System.out.println(tondeuse.getPositionTondeuse());
         }
     }
 
@@ -47,11 +44,8 @@ public class MowItNow {
     }
 
     public int getNombreTondeuse() {
-        return this.tondeuses.size();
+        return nombreDeTondeuses;
     }
 
-    public List<Tondeuse> getTondeuses() {
-        return this.tondeuses;
-    }
 }
 

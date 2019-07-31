@@ -44,15 +44,4 @@ public class MowItNowTest {
         assertThrows(IllegalArgumentException.class, () -> new MowItNow(""));
     }
 
-    @DisplayName("La position initiale de la premiere tondeuse doit être (1,2,N)")
-    @Test
-    void testPositionInitialePremiereTondeuse(){
-
-        List<Tondeuse> tondeuses = mowItNow.getTondeuses();
-        Tondeuse tondeuse = tondeuses.get(0);
-        assertEquals(1, tondeuse.getPositionTondeuse().getX());
-        assertEquals(2, tondeuse.getPositionTondeuse().getY());
-        assertEquals('N', tondeuse.getPositionTondeuse().getDirection());
-    }
-
 }
