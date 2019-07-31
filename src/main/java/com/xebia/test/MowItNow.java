@@ -6,12 +6,20 @@ public class MowItNow {
     private int nombreTondeuses;
 
     public MowItNow(String input){
+        checkInput(input);
+
         String[] parameters = input.split("\n");
         creerPelouse(parameters[0]);
         for(int i = 1; i < parameters.length; i = i + 2){
             nombreTondeuses++;
         }
 
+    }
+
+    private void checkInput(String input) {
+        if(input == null || input.length() == 0){
+            throw new IllegalArgumentException();
+        }
     }
 
     private void creerPelouse(String parameter) {

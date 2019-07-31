@@ -35,4 +35,10 @@ public class MowItNowTest {
         assertEquals(2, nombreTondeuse);
     }
 
+    @DisplayName("Le contenu du fichier ne doit pas être vide")
+    @Test
+    void testContenuFichierNeDoitPasEtreVide(){
+        assertThrows(IllegalArgumentException.class, () -> new MowItNow(""));
+    }
+
 }
