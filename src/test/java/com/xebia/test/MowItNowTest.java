@@ -3,6 +3,9 @@ package com.xebia.test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MowItNowTest {
@@ -39,6 +42,17 @@ public class MowItNowTest {
     @Test
     void testContenuFichierNeDoitPasEtreVide(){
         assertThrows(IllegalArgumentException.class, () -> new MowItNow(""));
+    }
+
+    @DisplayName("La position initiale de la premiere tondeuse doit être (1,2,N)")
+    @Test
+    void testPositionInitialePremiereTondeuse(){
+
+        List<Tondeuse> tondeuses = mowItNow.getTondeuses();
+        Tondeuse tondeuse = tondeuses.get(0);
+        assertEquals(1, tondeuse.getX());
+        assertEquals(2, tondeuse.getY());
+        assertEquals('N', tondeuse.getDirection());
     }
 
 }

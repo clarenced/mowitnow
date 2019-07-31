@@ -1,19 +1,32 @@
 package com.xebia.test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MowItNow {
 
     private Pelouse pelouse;
-    private int nombreTondeuses;
+    private List<Tondeuse> tondeuses;
 
     public MowItNow(String input){
         checkInput(input);
 
         String[] parameters = input.split("\n");
         creerPelouse(parameters[0]);
-        for(int i = 1; i < parameters.length; i = i + 2){
-            nombreTondeuses++;
-        }
+        creerTondeuses(parameters);
 
+    }
+
+    private void creerTondeuses(String[] parameters) {
+        tondeuses = new ArrayList<>();
+        for(int i = 1; i < parameters.length; i = i + 2){
+            String[] positionTondeuse = parameters[i].split(" ");
+            int x = Integer.parseInt(positionTondeuse[0]);
+            int y = Integer.parseInt(positionTondeuse[1]);
+            char direction = positionTondeuse[2].charAt(0);
+            tondeuses.add(new Tondeuse(x,y,direction));
+        }
     }
 
     private void checkInput(String input) {
@@ -34,7 +47,11 @@ public class MowItNow {
     }
 
     public int getNombreTondeuse() {
-        return nombreTondeuses;
+        return this.tondeuses.size();
+    }
+
+    public List<Tondeuse> getTondeuses() {
+        return this.tondeuses;
     }
 }
 
