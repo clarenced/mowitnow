@@ -1,0 +1,26 @@
+package com.xebia.test;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class MowItNowTest {
+
+
+    @DisplayName("Première ligne fichier correspond à la dimension de la pelouse")
+    @Test
+    void testPremiereLigneDuFichierContientDimensionPelouse(){
+        String input = "5 5\n" +
+                "1 2 N\n" +
+                "GAGAGAGAA\n" +
+                "3 3 E\n" +
+                "AADAADADDA";
+
+        MowItNow mowItNow = new MowItNow(input);
+        Pelouse pelouse = mowItNow.getPelouse();
+        assertEquals(5, pelouse.getDimX());
+        assertEquals(5, pelouse.getDimY());
+    }
+
+
+}
