@@ -29,6 +29,8 @@ public class Tondeuse {
             if(cmd == 'A')
                 if(direction == 'N')
                     ++this.y;
+                if(direction == 'S')
+                    --this.y;
         }
 
     }
