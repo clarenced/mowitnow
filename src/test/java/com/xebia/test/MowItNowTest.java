@@ -50,9 +50,9 @@ public class MowItNowTest {
 
         List<Tondeuse> tondeuses = mowItNow.getTondeuses();
         Tondeuse tondeuse = tondeuses.get(0);
-        assertEquals(1, tondeuse.getX());
-        assertEquals(2, tondeuse.getY());
-        assertEquals('N', tondeuse.getDirection());
+        assertEquals(1, tondeuse.getPositionTondeuse().getX());
+        assertEquals(2, tondeuse.getPositionTondeuse().getY());
+        assertEquals('N', tondeuse.getPositionTondeuse().getDirection());
     }
 
 }

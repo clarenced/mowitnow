@@ -1,68 +1,35 @@
 package com.xebia.test;
 
+import com.xebia.test.command.Avancer;
+import com.xebia.test.command.Command;
+import com.xebia.test.command.Droite;
+import com.xebia.test.command.Gauche;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Tondeuse {
 
-    private int x;
-    private int y;
-    private char direction;
+    private PositionTondeuse positionTondeuse;
+    private Map<Character, Command> commands;
 
     public Tondeuse(int x, int y, char direction) {
-        this.x = x;
-        this.y = y;
-        this.direction = direction;
+        this.positionTondeuse = new PositionTondeuse(x, y, direction);
+        this.commands = new HashMap<>();
+        this.commands.put('A', new Avancer());
+        this.commands.put('D', new Droite());
+        this.commands.put('G', new Gauche());
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public char getDirection() {
-        return direction;
+    public PositionTondeuse getPositionTondeuse(){
+        return this.positionTondeuse;
     }
 
     public void avancer(char[] commande) {
         for(char cmd: commande){
-            if(cmd == 'A'){
-                if(direction == 'N')
-                    ++this.y;
-                else if(direction == 'S')
-                    --this.y;
-                else if(direction == 'E')
-                    ++this.x;
-                else if(direction == 'W')
-                    --this.x;
-            } else if(cmd == 'D'){
-                if(direction == 'N')
-                    direction = 'E';
-                else if(direction == 'E')
-                    direction = 'S';
-                else if(direction == 'S')
-                    direction = 'W';
-                else if(direction == 'W')
-                    direction = 'N';
+            this.commands.get(cmd).avancer(positionTondeuse);
 
-            } else if(cmd == 'G'){
-                if(direction == 'N')
-                    direction = 'W';
-                else if(direction == 'W')
-                    direction = 'S';
-                else if(direction == 'S')
-                    direction = 'E';
-                else if(direction == 'E')
-                    direction = 'N';
             }
-
-
         }
 
     }
-
-    @Override
-    public String toString() {
-        return "(" + x + "," + y + "," + direction + ")";
-    }
-}
