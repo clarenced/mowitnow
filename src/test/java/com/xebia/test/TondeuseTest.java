@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TondeuseTest {
 
-    @DisplayName("Doit avancer la tondeuse lorsqu'elle reçoit la commande A")
+    @DisplayName("La tondeuse doit avancer la tondeuse lorsqu'elle reçoit la commande A")
     @ParameterizedTest(name = "{index} - Commande {1} => actual : {0}, expected : ({2},{3},{4})")
     @MethodSource("avancerArguments")
     void testAvancerTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
@@ -30,4 +30,27 @@ public class TondeuseTest {
                 Arguments.of(new Tondeuse(0,0, 'W'), "A".toCharArray(), -1, 0, 'W')
         );
     }
+
+    @DisplayName("La tondeuse doit pivoter à droite la tondeuse lorsqu'elle reçoit la commande D")
+    @ParameterizedTest(name = "{index} - Commande {1} => actual : {0}, expected : ({2},{3},{4})")
+    @MethodSource("pivoterArguments")
+    void testPivoterTondeuse(Tondeuse tondeuse, char[] commande, int xExpected, int yExpected, char directionExpected){
+        tondeuse.avancer(commande);
+
+        assertEquals(xExpected, tondeuse.getX());
+        assertEquals(yExpected, tondeuse.getY());
+        assertEquals(directionExpected, tondeuse.getDirection());
+    }
+
+    static Stream<Arguments> pivoterArguments(){
+        return Stream.of(
+                Arguments.of(new Tondeuse(0,0, 'N'), "D".toCharArray(),0, 0, 'E'),
+                Arguments.of(new Tondeuse(0,0, 'S'), "D".toCharArray(), 0, 0, 'W'),
+                Arguments.of(new Tondeuse(0,0, 'E'), "D".toCharArray(), 0, 0, 'S'),
+                Arguments.of(new Tondeuse(0,0, 'W'), "D".toCharArray(), 0, 0, 'N')
+        );
+    }
+
+
+
 }
